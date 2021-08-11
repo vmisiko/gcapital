@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>G-capital</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'css/bootstrap.min.css'%} " rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="{% static 'css/mdb.min.css'%}" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="{% static 'css/style.min.css' %} " rel="stylesheet">
+
+</head>
+
+<body>
+
+{% block content %}
+   
+
+<main>
+
+    <section>
+        <div class="container pt-5 mt-5">
+
+            <div class="row WOW fadeIn pt-3">
+
+                <div class="col-lg-6 col-md-12">
+
+                    <img src="{% static 'img/afcag.png' %}" class="img-fluid z-depth-1-half" alt="">
+
+
+                </div>
+
+                <div class="col-lg-6 col-md-12">
+
+                    <h6 class="blue-text"> CONNECTING HIGH IMPACT START-UPS TO OPPORTUNITIES </h6>
+
+                    <h1>
+                        About G-Capital Grants
+                    </h1>
+                    <P>
+                        G-Capital Grants strengthens the global startup community by
+                         connecting entrepreneurs creating innovative and scalable businesses with 
+                         the knowledge, network and funding they require to succeed.
+                    </P>
+
+                    <button class="btn btn-primary"> Know more About Us </button>
+
+                </div>
+                
+            </div>
+
+
+        </div>
+
+    </section>
+
+    <hr class="mt-5">
+
+    <section>
+        <div class="container-fluid deep-blue-gradient  ">
+
+            <div class="container pt-5">
+                <div class=" row WOW fadeIn">
+
+                    <div class="col-lg-5 col-md-12">
+                        <h6 class="blue-text"> THE SHORT-LISTING PROCESS </h6>
+                        <h1> <strong> Sign Up Now </strong></h1>
+
+
+                        <P>
+                            The Africa Capital Grants' Directors appoint a Grants 
+                            Committee to undertake a shortlisting and final selection process.
+                             For every Grants round, hundreds of applications are usually received and 
+                             the committee can only select a small percentage to fund. We will notify 
+                             the successful applicants at individual level with the outcome of their assesment process. 
+                             However, the unsuccessful applicants will receive a general regret message.
+
+                        </P>
+
+                    </div>
+
+                    <div class="col-lg-7 col-md-12 pb-4">
+
+                        <img style = "max-width: 100%; max-height: 100%;" src="{% static 'img/hands1.jpg' %}" style="height:auto;" class="img-fluid z-depth-1-half" alt="">
+
+                    </div>
+                </div>
+
+
+
+
+            </div>
+
+        </div>
+    </section>
+
+    <section>
+
+        <div class="container pt-5 mt-5">
+
+            <div class="row WOW fadeIn pt-3">
+
+                <div class="col-lg-6 col-md-12">
+
+                    <h6 class="blue-text">HOW TO APPLY FOR THE GRANT</h6>
+
+                    <h1> <strong> Helping You Put Systems in Place that Work </strong></h1>
+
+                </div>
+
+                <div class="col-lg-6 col-md-12">
+
+                        <P>
+                            Are You stranded with No Source of Funding for your Business Idea?
+                             Is your Business Stagnant because you lack Capital? Apply for a Grant
+                              by sending Ksh 100 to Mpesa Paybill: 254951, Account: Your Name
+                        </P>
+                        <p>
+                            You will receive a series of questions via sms that you will be required to answer truthfully.
+                             SMS are free. We wish You all the Very Best!
+
+                        </P>
+                </div>
+                 
+            </div>
+
+            <div class="row WOW fadeIn pt-3">
+
+                <div class="col-lg-4 col-md-12">
+
+                    <img  style = "max-width: 100%; max-height: 100%;" src="{% static 'img/afcag.png'%}" alt="">
+
+                </div>
+
+                <div  class="col-lg-4 col-md-12">
+                    <img style = "max-width: 100%; max-height: 100%;" src="{% static 'img/dolar4.jpg'%}" alt="">
+                       
+                </div >
+
+                <div class="col-lg-4 col-md-12">
+                    <img style = "max-width: 100%; max-height: 100%;"  src="{% static 'img/fitin.jpg '%}" alt="">
+                       
+                </div>
+                 
+            </div>
+
+        </div>
+
+    </section>
+</main>
+
+
+ 
+{% endblock %}
+    <!-- SCRIPTS -->
+    <!-- JQuery -->
+
+    <script type="text/javascript">
+        // Animations initialization
+        new WOW().init();
+      </script>
+{% block scripts %}
+
+{% endblock %}
+</body>
+
+</html>

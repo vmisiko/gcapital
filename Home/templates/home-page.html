@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+<html lang="en">
+{% load static %}
+
+{% load crispy_forms_tags %}
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>G-capital</title>
+
+</head>
+
+<body>
+
+{% block content %}
+   
+    <!-- main layout  -->
+    <main class="mt-5 pt-5">
+        <div class="container">
+
+            <!--Section: Jumbotron-->
+            <section class="card blue-gradient wow fadeIn" id="intro">
+
+                <!-- Content -->
+                <div class="card-body text-white text-center py-5 px-5 my-5">
+
+                    <h1 class="mb-4">
+                        <strong>G-capital Grants</strong>
+                    </h1>
+                    <p>
+                        <strong>Apply for Grants with zero intrest</strong>
+                    </p>
+                    <p class="mb-4">
+                        <strong>
+                            Looking for finance to boost, your start-up or Small Business ? 
+                        </strong>
+                    </p>
+                    <strong>
+                        <i  class="fas fa-trophy"></i >  We are here for you.
+                    </strong>
+                   
+                    <p>
+
+                    </p>
+                    
+
+                </div>
+                <!-- Content -->
+            </section>
+            <!--Section: Jumbotron-->
+
+            <!--Section: Cards-->
+            <section class="pt-5">
+
+                <h6 class= "blue-text">WE HELP BUDDING ENTREPRENEURS </h6>
+                <!--Grid row-->
+                <div class="row wow fadeIn">
+
+                    
+                    <!--Grid column-->
+                    <div class="col-lg-5 col-xl-4 mb-4">
+                        <!--Featured image-->
+                        <h2> 
+                            <strong>
+                             G-Capital Grants works to end extreme poverty in Rural Africa through 
+                            funding Entrepreneurship and Innovation.
+                            </strong>
+                        </h2>
+                        
+                    </div>
+                    <!--Grid column-->
+
+                    <!--Grid column-->
+                    <div class="col-lg-7 col-xl-7 ml-xl-4 mb-4">
+                       <P>
+                        With enough experience in the poverty eradication sector, including forays 
+                        into both micro-finance and unconditional cash transfers, we have horned a multi-faceted, 
+                        integrated and highly cost effective method that works best in Rural East Africa where
+                         few, if any, banks exist.
+                       </P>
+
+                       <P>
+                        Entrepreneurship is by nature a high-risk activity. Our first-time entrepreneurs are 
+                        more willing to take the risk of starting a new business venture if they don’t fear 
+                        the high costs of failure and further indebtedness or loss of meager assets potentially 
+                        caused by a loan default.
+                       </P>
+
+                       <P>
+                        We are stepping in with repayable Grants at zero interest to boost the confidence of
+                         young entrepreneurs to undertake small, creative projects that benefit themselves and their 
+                         local communities.
+                       </P>
+                    </div>
+                    <!--Grid column-->
+
+                </div>
+                <!--Grid row-->
+
+                <hr class="mb-3">
+
+                <!--Grid row-->
+                <div class="container">
+                    <h2 class="blue-text"> Are you an Entrepreneur or a Small Business That Wants Funding? </h2>
+                   
+                <!-- Card -->
+                <div class="card card-image" style="background-image: url( {% static 'img/maasai.jpg' %} );">
+
+                    <!-- Content -->
+                    <div class="text-white text-center d-flex align-items-left rgba-black-strong py-5 px-4">
+                    <div class="card blue-gradient ">
+                        
+                        <div class= "card-body "> 
+                
+                            <form method="post" id = "post_form"  class="">
+                                {% csrf_token %}
+                
+                                <h2> Grant Application </h2>
+                                <div class ="pb-3">
+                                <!-- <input id="id_Id_number" type="text" placeholder="Enter Id number"> -->
+                
+                                {{form.Id_number}}
+                                {{form.Id_number.errors}}
+                                </div>
+                
+                                <div class="pb-3">
+                                <!-- <input id="id_Phone_number" type="text" placeholder="Enter Phone number"> -->
+                                {{form.Phone_number}}
+                                {{form.Phone_number.errors }}
+                
+                                </div>
+                
+                                <div > 
+                                <button id = "submit-btn" href = "" type= "submit" class="btn btn-pink"><i class="fas fa-clone left"></i> Verify Mpesa Payment </button>
+                                </div>
+                
+                                <div id ="load_button" style= "display: none;" class="spinner-border text-danger" role="status">
+                                    <span class="sr-only">Loading...</span>
+                                  </div>
+                
+                                  <div id ="paid_button" style= "display: none;" class="btn tbtn-success" >
+                                    <i class="fas fa-clone left "></i>  paid
+                                  </div>
+                
+                                  <div id ="unpaid_button" style= "display: none;" class="btn tbtn-danger" >
+                                    <i class="fas fa-clone left "></i> Not yet  paid
+                                  </div>
+                
+                
+                            </form>
+                        
+                        </div>
+                
+                    </div>
+                    </div>
+                
+                </div>
+                <!-- Card -->
+                   
+
+                </div>
+                <!--Grid row-->
+
+            </section>
+
+
+    </main>
+               
+
+    <hr class="mb-5">
+
+    <!--Main layout-->
+<section>
+    <div  class="container-fluid deep-blue-gradient">
+
+        <div    class="container ">
+            <!-- row  -->
+            <div class="row wow fadeIn">
+
+                <div class=" col-lg-8 col-md-12   ">
+                    <h2 class="mt-4">  <strong> Peer To Peer Grants </strong></h2>
+
+                    <P>
+                        G-Capital Grants allows people to lend small amounts of money directly to 
+                        entrepreneurs in developing countries. It is a peer to peer micro-lending service that 
+                        links borrowers and lenders worldwide without the inter mediation of a local micro-finance 
+                        institution.
+                    </P>
+
+                    <P>
+                        G-Capital Grants facilitates micro-lending transactions between individual funding 
+                        Partners worldwide and low-income entrepreneurs in developing countries. Partners fund the 
+                        loans, which borrowers use to develop their young businesses. Borrowers may write their own 
+                        business proposal and upload it on our website. However an SMS based questionare is also 
+                        available and a Processing fee of Ksh 100 is charged per Every Application to cater for 
+                        administering the Grant and SMS cost.
+                    </P>
+                    
+                    <a href="#" class="btn btn-pink"> More Info</a href="#">
+                </div>
+
+                <div class=" col-lg-4 col-md-12 ">
+                    <div class="row wow fadeIn pt-4">
+
+                        <div class="col-6">
+                            <i class="fab fa-500px fa-5x amber-text"></i>
+
+                            <h2>  <strong> 3,000 </strong></h2>
+                            <p class="grey-text">START-UPS WE'VE HELPED </p>
+                            
+                        </div> 
+                        <div class="col-6">
+                            <i class="fas fa-suitcase fa-5x amber-text"></i>
+
+                            <h2>  <strong> 20 </strong></h2>
+                            <p class="grey-text">CORPORATE PROGRAMS </p>
+                            
+                        </div>     
+                        
+                    </div>
+
+                    <div class="row wow fadeIn pt-4">
+
+                        <div class="col-6">
+                            <i class="fab fa-500px fa-5x amber-text"></i>
+
+                            <h2>  <strong> 10</strong></h2>
+                            <p class="grey-text">Training Courses </p>
+                            
+                        </div> 
+                        <div class="col-6">
+                            <i class="fas fa-user-md fa-5x amber-text"></i>
+
+                            <h2>  <strong>  126 </strong></h2>
+                            <p class="grey-text">Strategic Partners </p>
+                            
+                        </div>     
+                        
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+         <!-- row  -->
+        <hr class="pb-5">
+  
+</section>
+
+ <!-- section focus  -->
+<section>
+    
+        <div>
+            <div class="card card-image py-5" style="background-image: url( {% static 'img/maasai2.jpg' %} );">
+
+                <!-- Content -->
+                    <div class="text-white text-center d-flex align-items-right rgba-black-strong py-5 px-4">
+
+                   
+                          
+                        <P><h2> <sup class="amber-text pt-5">"</sup> Focus On your Mission </h2> </p>  
+
+
+
+                        <p><h2>while <strong class= "amber-text pb-5 "> We Focus on Funding" </strong><h2></p>
+                    
+                    
+                                
+                    </div>
+
+            </div>
+        </div>
+         <!-- row focus  -->
+         <hr class="pb-3">
+          <!-- row paybill sms -->
+    
+</section>
+ <!-- section focus  -->
+ 
+<section>
+
+    <div class="container">
+        <h6 class="blue-text"> INVEST IN YOUR BUSINESS GROWTH NOW!</h6>
+         <div class="row wow fadeIn">
+
+            <div class=" col-lg-6 col-md-12 ">
+
+                 <h2> <strong>
+                    Send an SMS with the word GRANT to 20257 to Apply for A Free Grant.
+                    After paying the Application Fee, Fill out your Grant Application via SMS/Web
+                 </strong>
+
+                 </h2>
+
+            </div>
+
+            <div class=" col-lg-6 col-md-12 ">
+                
+                <P>
+                    The interest rate for  G-Capital Grants is 0% and a processing fee of 3.5% is chargeable on Disbursement, Funding above Ksh 50,000 is wired into Borrowers Account or a Cheque is issued for Collection at the Nairobi Office. 
+                    Applications approved and Less than Ksh 50,000 are Disbursed via M-PESA. Potential 
+                    applicants must have a business or source of income that will allow them to make repayments 
+                    each week; Be able to secure endorsements from their family, neighbors or work associates, and the 
+                    leader of an organization in their community.
+                </P>
+
+                <P>
+                    If you have been invited to join by an existing member in good standing, you can borrow up to 5000 KES 
+                    for your first loan. If you do not have an invite from an existing member, you can borrow up to Ksh 
+                    2,000 for your first loan. After that, your credit limit will increase depending on your record of on-time repayments.
+                </P>
+
+            </div>
+
+        </div>
+            
+    </div>
+       
+       
+</section>
+
+<hr class="mb-5">
+
+    <!--Main layout-->
+
+<section>
+ <div class="container">
+
+    <div class="row WOW fadeIn mx-5 " >
+
+        <button style="padding: 50px;" class="btn btn-info btn-lg mx-3">
+
+            <i class="fas fa-hand-holding-usd fa-5x"></i>
+
+            <p class="mt-3"> GRANTS</p>
+                <p>FUNDING </p>
+
+        </button>
+
+        <button  style="padding: 50px;" class="btn btn-info btn-lg mx-3  ">
+
+            <i class="far fa-user-circle fa-5x"></i>
+            <p class="mt-3"> Business </p>
+            <p> Mentorship </p>
+
+        </button>
+
+        <button style="padding: 50px;" class="btn btn-info btn-lg mx-3 ">
+            <i class="far fa-clock fa-5x"></i>
+
+            <p class="mt-3"> Corporate 
+                <P> Networking </p>
+
+        </button>
+
+        <button  style="padding: 50px;" class="btn btn-info btn-lg mx-3">
+
+            <i class="fab fa-accessible-icon fa-5x"></i>
+
+            <p class="mt-3"> Talent </p>
+            <p> Acquisition </p>
+
+        </button>
+
+    </div>
+
+</div>
+
+</section>
+ <hr class="pb-5">
+ 
+{% endblock %}
+
+
+
+{% block scripts %}
+
+<script>
+
+    $("#post_form").on("submit", function(event){
+        event.preventDefault();
+        // alert("hey clicked me")
+        $("#submit-btn").hide();
+        $("#load_button").show();
+    
+        $.ajax({
+            url: "{% url 'Home:confirm_assessment' %}",
+            dataType: "json",
+            data: $("#post_form").serialize(),
+            success: function(data){
+                if (data.obj){
+                    $("#load_button").hide();
+                    $("#paid_button").show();
+                    alert(" Assessement succesful")
+                }
+                else{
+    
+                   $("#load_button").hide();
+                    $("#unpaid_button").show();
+                }
+                
+            }
+    
+    
+        })
+    
+    })
+</script>
+{% endblock %}
+
+</body>
+
+</html>

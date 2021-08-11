@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    {% block content %}
+    <div class="card card-image" style="background-image: url( {% static 'img/maasai.jpg' %} );">
+
+        <!-- Content -->
+        <div class="text-white text-center d-flex align-items-left rgba-black-strong py-5 px-4">
+        <div class="card blue-gradient ">
+            
+            <div class= "card-body "> 
+    
+                <form method="post" id = "post_form"  class="">
+                    {% csrf_token %}
+    
+                    <h2> Grant Application </h2>
+                    <div class ="pb-3">
+                    <!-- <input id="id_Id_number" type="text" placeholder="Enter Id number"> -->
+    
+                    {{form.Id_number}}
+                    {{form.Id_number.errors}}
+                    </div>
+    
+                    <div class="pb-3">
+                    <!-- <input id="id_Phone_number" type="text" placeholder="Enter Phone number"> -->
+                    {{form.Phone_number}}
+                    {{form.Phone_number.errors }}
+    
+                    </div>
+    
+                    <div > 
+                    <button id = "submit-btn" href = "" type= "submit" class="btn btn-pink"><i class="fas fa-clone left"></i> Verify Mpesa Payment </button>
+                    </div>
+    
+                    <div id ="load_button" style= "display: none;" class="spinner-border text-danger" role="status">
+                        <span class="sr-only">Loading...</span>
+                      </div>
+    
+                      <div id ="paid_button" style= "display: none;" class="btn tbtn-success" >
+                        <i class="fas fa-clone left "></i>  paid
+                      </div>
+    
+                      <div id ="unpaid_button" style= "display: none;" class="btn tbtn-danger" >
+                        <i class="fas fa-clone left "></i> Not yet  paid
+                      </div>
+    
+    
+                </form>
+            
+            </div>
+    
+        </div>
+        </div>
+    
+    </div>
+
+    {% endblock %}
+
+    {% block scripts%}
+<script>
+
+$("#post_form").on("submit", function(event){
+    event.preventDefault();
+    // alert("hey clicked me")
+    $("#submit-btn").hide();
+    $("#load_button").show();
+
+    $.ajax({
+        url: "{% url 'Home:confirm_assessment' %}",
+        dataType: "json",
+        data: $("#post_form").serialize(),
+        success: function(data){
+            if (data.obj){
+                $("#load_button").hide();
+                $("#paid_button").show();
+                alert(" Assessement succesful")
+            }
+            else{
+
+               $("#load_button").hide();
+                $("#unpaid_button").show();
+            }
+            
+        }
+
+
+    })
+
+})
+</script>
+    
+
+    {% endblock %}
+</body>
+</html>

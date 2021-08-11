@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+<html lang="en">
+{% load static %}
+{% load crispy_forms_tags %}
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>G-capital</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'css/bootstrap.min.css'%} " rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="{% static 'css/mdb.min.css'%}" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="{% static 'css/style.min.css' %} " rel="stylesheet">
+
+</head>
+
+<body>
+
+{% block content %}
+
+<main>
+    <div class="container pt-5 mt-5" >
+        <div class="row WOW fadeIn">
+            
+
+                <div class="card col-lg-4 col-md-4 text-center">
+                    <div class="card-header">
+                        <h1> Venue</h1>
+
+                    </div>
+                    
+                    <div class="card-body">
+                        <i class="fas fa-map-marker-alt fa-5x"></i>
+
+
+                        <h6 class="amber-text mt-2"> Parklands </h6>
+                        <h6 class = "amber-text">2nd Floor </h6>
+
+                    </div>
+
+                </div>
+
+                <div class="card col-lg-4 col-md-4 text-center">
+                    <div class="card-header ">
+                        <h1 > Email</h1>
+
+                    </div>
+                    
+                    <div class="card-body">
+
+                        <i class="far fa-envelope-open fa-5x"></i>
+
+                        <h6 class="amber-text mt-2">victormisiko.vm@gmail.com </h6>
+                        <h6 class = "amber-text"> misikovictor123gmail.com </h6>
+
+                    </div>
+
+                </div>
+
+                
+                <div class="card col-lg-4 col-md-4 text-center">
+                    <div class="card-header">
+                        <h1> contacts</h1>
+
+                    </div>
+                    
+                    <div class="card-body">
+
+                        <i class="far fa-envelope-open fa-5x"></i>
+
+                        <h6 class="amber-text mt-2"> +254708591339</h6>
+                        <h6 class = "amber-text">+254757494741 </h6>
+
+                    </div>
+
+                </div>
+
+            
+
+
+        </div>
+    </div>
+
+    <section>
+        <div class="container pt-5 mt-3" >
+            
+            <div class="card text-center md-form px-3">
+                <form method="POST" id="post_form" class="pt-5">
+                    {% csrf_token %}
+
+                    <!-- {{form|crispy }} -->
+
+                
+                    <div class="row WOW fadeIn">
+
+                        <div class="col-lg-6 col-md-12">
+
+                            <!-- {{form.Name.label_tag }} -->
+                            {{ form.Name }}
+                            {{form.Name.errors}}
+            
+
+                            <br />
+
+                            <!-- {{ form.email.label_tag }} -->
+                            {{ form.email }}
+                            {{form.email.errors }}
+
+                            
+                        </div>
+                        
+                        <div class="col-lg-6 col-md-12">
+                            
+                        <!-- {{form.message.label_tag}} -->
+                           {{ form.message }}
+                           {{ form.message.errors }}
+                        </div>
+
+                    </div>
+
+                    <hr class="my-3">
+                    <!-- <button class="btn btn-primary ml-auto mr-auto mb-3" type="submit"> Submit</button> -->
+                    <div > 
+                        <button id = "submit-btn" href = "" type= "submit" class="btn btn-primary ml-auto mr-auto mb-3">
+                            <i class="fas fa-clone left"></i> submit </button>
+                        </div>
+        
+                        <div id ="load_button" style= "display: none;" class="spinner-border text-danger" role="status">
+                            <span class="sr-only">Loading...</span>
+                          </div>
+        
+                          <div id ="paid_button" style= "display: none;" class="btn btn-success" >
+                            <i class="fas fa-clone left "></i> Email sent successfully
+                         
+                          </div>
+        
+                          <div id ="unpaid_button" style= "display: none;" class="btn btn-danger" >
+                            <i class="fas fa-clone left "></i> Not sent, try again
+                          </div>
+
+                          <a style= "display: none;" href= "" id = "resubmit"> Back </a>
+                </form> 
+            
+           </div>
+            
+        </div>
+    </section>
+</main>
+
+
+ 
+{% endblock %}
+    <!-- SCRIPTS -->
+    <!-- JQuery -->
+
+    <script type="text/javascript">
+        // Animations initialization
+        new WOW().init();
+      </script>
+{% block scripts %}
+
+<script>
+    
+    $("#resubmit").on("click", function(e){
+        e.preventDefault();
+        $("#submit-btn").show();
+        $("#unpaid_button").hide();
+        $("#resubmit").hide();
+        $("#load_button").hide();
+        $("#paid_button").hide();
+        $("#post_form")[0].reset()
+    })
+</script>
+
+<script>
+$("#post_form").on("submit", function(event){
+    event.preventDefault();
+    // alert("hey clicked")
+    $("#submit-btn").hide();
+    $("#load_button").show();
+    $("#resubmit").show();
+
+
+    $.ajax({
+        url: "{% url 'Home:ajax_contact' %}",
+        dataType: "json",
+        data: $("#post_form").serialize(),
+        success: function(data){
+            if (data.message == "Email sent successfully"){
+                $("#load_button").hide();
+                $("#paid_button").show();
+                $("#resubmit").show();
+                alert(data.message);
+            }
+            else{
+
+               $("#load_button").hide();
+                $("#unpaid_button").show();
+                $("#resubmit").show()
+            }
+            
+        }
+
+
+    })
+
+})
+
+</script>
+{% endblock %}
+</body>
+
+</html>
